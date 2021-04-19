@@ -23,7 +23,7 @@ env:
   #REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_URL: https://github.com/cslily/lede
   #REPO_BRANCH: master
-  REPO_BRANCH: dev
+  REPO_BRANCH: jme
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
@@ -130,6 +130,7 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
+        copy /workdir/openwrt/.config ${FIRMWARE}/.config
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
